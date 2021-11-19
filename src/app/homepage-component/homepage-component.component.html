@@ -1,4 +1,13 @@
-<mat-grid-list cols="7" rowHeight="4:5" style="margin: 1%;" [gutterSize]="'10px'">
+<!-- First Search Grid -->
+<mat-grid-list cols="1" rowHeight="2:1" style="margin: 1%;text-align: center;" [gutterSize]="'10px'">
+<mat-form-field appearance="fill" style="width: 100%;">
+    <mat-label>Search</mat-label>
+    <input matInput>
+  </mat-form-field>
+  </mat-grid-list>
+<!-- /////// -->
+  <!-- Second-grid| desktop| Add for mobile also --> 
+<mat-grid-list cols="6" rowHeight="2:2" style="margin: 1%;" [gutterSize]="'10px'">
     <mat-grid-tile class="tiles">1</mat-grid-tile>
     <mat-grid-tile class="tiles">2</mat-grid-tile>
     <mat-grid-tile class="tiles">3</mat-grid-tile>
@@ -10,3 +19,4 @@
     <mat-grid-tile class="tiles">9</mat-grid-tile>
     <mat-grid-tile class="tiles">10</mat-grid-tile>
   </mat-grid-list>
+<!-- ...... -->
