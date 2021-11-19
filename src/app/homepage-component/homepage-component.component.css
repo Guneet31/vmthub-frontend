@@ -1,0 +1,6 @@
+.tiles {
+    border-radius: 6px;
+    background-color: blueviolet;
+    box-shadow: rgba(255, 255, 255, 0.109) -10px 0px 10px 0px;
+    cursor: pointer;
+  }
