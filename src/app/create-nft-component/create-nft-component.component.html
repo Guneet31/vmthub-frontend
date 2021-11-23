@@ -1,0 +1,59 @@
+  <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Fill out your nft name</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder=" " formControlName="firstCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Fill out your nft description</ng-template>
+        <mat-form-field appearance="fill" style="width: 100%;">
+          <mat-label>Description</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder=" "
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+        <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel>Select media for your nft</ng-template>
+            <!-- <mat-form-field appearance="fill"> -->
+              <!-- <mat-label>Select media </mat-label> -->
+              <input  formControlName="thirdControl" placeholder=" "
+              (change)="processFile($event)"
+              required type="file" accepts="jpeg,png">
+            <!-- </mat-form-field> -->
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+    </mat-step>
+    <mat-step>
+        <form [formGroup]="fourthFormGroup">
+            <ng-template matStepLabel>Set price for your nft</ng-template>
+            <mat-form-field appearance="fill">
+              <mat-label>Price</mat-label>
+              <input matInput formControlName="fourthControl" placeholder=" "
+                     required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button  (click)="onSubmit()">Create</button>
+            </div>
+          </form>
+    </mat-step>
+  </mat-stepper>
+  <!-- Progress Bar -->
+  <mat-progress-bar style="margin-top: 5%;" *ngIf="progressbar" mode="buffer"></mat-progress-bar>

@@ -6,8 +6,9 @@
   </mat-form-field>
   </mat-grid-list>
 <!-- /////// -->
-  <!-- Second-grid| desktop| Add for mobile also --> 
-<mat-grid-list cols="6" rowHeight="2:2" style="margin: 1%;" [gutterSize]="'10px'">
+
+  <!-- Second-grid| desktop|mobile|Tabs also --> 
+<mat-grid-list  cols="{{columns}}" rowHeight="2:2" style="margin: 1%;" [gutterSize]="'10px'" (window:resize)="onResize($event)">
     <mat-grid-tile class="tiles">1</mat-grid-tile>
     <mat-grid-tile class="tiles">2</mat-grid-tile>
     <mat-grid-tile class="tiles">3</mat-grid-tile>

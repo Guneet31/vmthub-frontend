@@ -13,11 +13,18 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatStepperModule} from '@angular/material/stepper';
+import { CreateNftComponentComponent } from './create-nft-component/create-nft-component.component';
+import {FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatMenuModule} from '@angular/material/menu';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponentComponent,
-    HeaderComponentComponent
+    HeaderComponentComponent,
+    CreateNftComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +36,13 @@ import {MatInputModule} from '@angular/material/input';
     MatSidenavModule,
     MatGridListModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatStepperModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatProgressBarModule,
+    MatMenuModule,
+    HttpClientModule
     
   ],
   providers: [],

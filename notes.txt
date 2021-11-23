@@ -1,0 +1,10 @@
+Daily-Work-Log:=
+Created By: Guneet Singh Lamba
+November 23, 2021
+Version: 0.01
+1. Done: pre-minting code
+2. Done: metadata file uploaded to pinata IPFS
+3. TODO: Create nft for sale on marketplace
+4. TODO: Load/View Nft on marketplace
+5. TODO: Buy Nft on marketplace
+6. TODO: Transfer Nft to another account
