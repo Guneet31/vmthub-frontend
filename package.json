@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@alch/alchemy-web3": "^1.1.8",
     "@angular/animations": "~13.0.0",
     "@angular/cdk": "^13.0.2",
     "@angular/common": "~13.0.0",
@@ -20,8 +21,13 @@
     "@angular/platform-browser": "~13.0.0",
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",
+    "axios": "^0.24.0",
+    "ethers": "^5.5.1",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
+    "web3": "^1.6.1",
+    "web3-utils": "^1.6.1",
+    "web3modal": "^1.9.4",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

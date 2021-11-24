@@ -16,7 +16,10 @@
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
     "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "importHelpers": true,
+    "allowJs":true,
     "target": "es2017",
     "module": "es2020",
     "lib": [
@@ -24,6 +27,7 @@
       "dom"
     ]
   },
+  "allowSyntheticDefaultImports": true,
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

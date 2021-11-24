@@ -36,6 +36,7 @@ export class HeaderComponentComponent implements OnInit {
       const account = accounts[0];  // this is the user public wallet address
       this.userWalletAddress = account;
       console.log("myAccount is---->>>>",account);
+      localStorage.setItem('myAccount',account);
       // metamask deeplinking for ios|android app
 
     }
