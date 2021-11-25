@@ -56,6 +56,8 @@ export class HomepageComponentComponent implements OnInit {
     
   }
 
+// load all nfts of on marketplace contract on home page
+
 async loadNfts()
 {
  
@@ -85,7 +87,18 @@ async loadNfts()
     this.nftsForSale = items.filter(i => i != undefined)
     console.log("items",items);
   }
-
+// buy nft from marketplace 
+  async buyNft(nft:any) {
+    const provider = new ethers.providers.Web3Provider((window as any).ethereum);
+    const signer = provider.getSigner()
+    const contract = new ethers.Contract(this.nftmarketaddress, marketabi.abi, signer)
+    const price = web3.utils.toWei(nft.price.toString(), 'ether');
+    const transaction = await contract['createMarketSale'](this.nft_contractAddress, nft.tokenId, {
+      value: price
+    })
+    await transaction.wait()
+    this.loadNfts();
+  }
 
 
 

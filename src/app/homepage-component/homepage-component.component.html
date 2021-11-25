@@ -15,7 +15,7 @@
         <mat-grid-tile-footer>
           <h3><b>{{nft.name}}</b></h3>&nbsp;
           <h3><b>{{nft.price}}ETH: </b></h3>
-          <button mat-raised-button color="primary" style="margin-left:2%">Buy</button>
+          <button mat-raised-button color="primary" style="margin-left:2%" (click)="buyNft(nft)">Buy</button>
           </mat-grid-tile-footer>
       </div>
     </mat-grid-tile>
