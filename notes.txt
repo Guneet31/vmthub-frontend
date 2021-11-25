@@ -14,5 +14,16 @@ Version: 0.02
 3. Done: Create nft for sale on marketplace
 3A.TODO: Sign Automatically the marketplace transaction(if possible)
 4. Done: Load/View Nft on marketplace
+5. TODO: Buy Nft on marketplace
+6. TODO: Transfer Nft to another account
+||\/||
+November 24, 2021
+Version: 0.03
+3. Done: Create nft for sale on marketplace
+3A.TODO: Sign Automatically the marketplace transaction(if possible)
+4. Done: Load/View Nft on marketplace
 5. Done: Buy Nft on marketplace
 6. TODO: Transfer Nft to another account
+7. TODO: Show details of Nft on nft details page
+8. TODO: Show Transactions of Nft on marketplace page
+9. TODO: Add supply limit for nfts
