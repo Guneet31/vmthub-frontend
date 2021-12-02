@@ -4,6 +4,7 @@ import abi from '../contracts/HUB.sol/HUB.json';
 import marketabi from '../contracts/HUB_marketplace.sol/NFTMarket.json';
 import {AbiItem} from 'web3-utils'
 import * as axios from 'axios';
+import { Router } from '@angular/router';
 declare global {
   interface Window {
     ethereum: any;
@@ -22,7 +23,7 @@ export class HomepageComponentComponent implements OnInit {
   nftsForSale:any = [];
   nftmarketaddress:any = "0xa093427ceA084F2fF80DCa9A03358760a1120a6d"
   nft_contractAddress:any = "0xc3F9e532B716EBdBd81dF897B716f9A41E689299"
-  constructor() { }
+  constructor(private _router:Router) { }
 
   ngOnInit(): void {
     // code to check width of device
@@ -68,7 +69,7 @@ async loadNfts()
     const data = await marketContract['fetchMarketItems']()
     
     const items = await Promise.all(data.map(async (i:any) => {
-      console.log(i.tokenId)
+      console.log(i)
       const tokenUri = await tokenContract['tokenURI'](i.tokenId)
       if(tokenUri != "https://gateway.pinata.cloud/ipfs/QmbFMke1KXqnYyBBWxB74N4c5SBnJMVAiMNRcGu6x1AwQH")
     { const meta = await axios.default.get(tokenUri)
@@ -80,6 +81,7 @@ async loadNfts()
         owner: i.owner,
         image: meta.data.image,
         name: meta.data.name,
+        contract: i.nftContract,
       }
       return item
     }else{return}
@@ -100,7 +102,9 @@ async loadNfts()
     this.loadNfts();
   }
 
-
+  openDetails(route:any,nft:any) {
+  this._router.navigate([route],{state:nft})
+  }
 
 
 }

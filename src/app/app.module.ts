@@ -19,12 +19,14 @@ import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatMenuModule} from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
+import { NftDetailsComponentComponent } from './nft-details-component/nft-details-component.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponentComponent,
     HeaderComponentComponent,
-    CreateNftComponentComponent
+    CreateNftComponentComponent,
+    NftDetailsComponentComponent
   ],
   imports: [
     BrowserModule,

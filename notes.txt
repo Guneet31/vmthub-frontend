@@ -27,3 +27,12 @@ Version: 0.03
 7. TODO: Show details of Nft on nft details page
 8. TODO: Show Transactions of Nft on marketplace page
 9. TODO: Add supply limit for nfts
+||\/||
+December 1, 2021
+Version: 0.04
+3A.TODO: Sign Automatically the marketplace transaction(if possible)
+6. TODO: Transfer Nft to another account
+7. Done: Show details of Nft on nft details page
+8. TODO: Show Transactions of Nft on marketplace page
+9. TODO: Add supply limit for nfts
+10.TODO: Add Profile page

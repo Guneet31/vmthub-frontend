@@ -9,7 +9,7 @@
 
   <!-- Second-grid| desktop|mobile|Tabs also --> 
 <mat-grid-list  cols="{{columns}}" rowHeight="2:1" style="margin: 1%;" [gutterSize]="'10px'" (window:resize)="onResize($event)">
-    <mat-grid-tile class="tiles" *ngFor="let nft of nftsForSale" colspan="2" rowspan="3">
+    <mat-grid-tile class="tiles" *ngFor="let nft of nftsForSale" colspan="2" rowspan="3" (click)="openDetails('details',nft)">
       <div style="text-align: center;display: block;">
         <img src="{{nft.image}}" alt="Card image cap" style="text-align: center;"/>
         <mat-grid-tile-footer>

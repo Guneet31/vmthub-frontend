@@ -1,0 +1,17 @@
+<mat-grid-list  cols="{{columns}}" rowHeight="2:1" style="margin: 2%;text-align: center;" [gutterSize]="'10px'">
+    <mat-grid-tile class="tiles" colspan="1" rowspan="2" >
+        <div style="text-align: center;display: block;">
+          <img src="{{data.image}}" alt="Card image cap" style="text-align: center;"/>
+        </div>
+      </mat-grid-tile>
+    <mat-grid-tile >
+        <div style=" position: absolute;
+        left: 5px;text-align: start;top: 2px;">
+ <h3><b>Name: {{data.name}}</b></h3>
+ <h3><b>Price: {{data.price}}ETH:</b></h3>
+ <h3><b>Seller: {{data.seller}}</b></h3>
+ <h3><b>Contract Address: {{data.contract}}</b></h3>
+ <button mat-raised-button color="primary" style="margin-left:2%" >Buy</button>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
