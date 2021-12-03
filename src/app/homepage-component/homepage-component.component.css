@@ -1,6 +1,6 @@
 .tiles {
-    border-radius: 6px;
-    background-color: rgb(226, 43, 104);
+    /* border-radius: 6px; */
+    /* background-color: rgb(226, 43, 104); */
     box-shadow: rgba(255, 255, 255, 0.109) -10px 0px 10px 0px;
     cursor: pointer;
     
@@ -10,3 +10,22 @@
   {
       flex-direction: column;
   } 
+  .post-card {
+    max-width: 400px;
+
+  }
+  .add-post-card {
+    width: 100%;
+    
+    border-radius: 6px;
+}
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+  .md-grid-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  

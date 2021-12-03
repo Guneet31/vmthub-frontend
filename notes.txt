@@ -35,4 +35,31 @@ Version: 0.04
 7. Done: Show details of Nft on nft details page
 8. TODO: Show Transactions of Nft on marketplace page
 9. TODO: Add supply limit for nfts
-10.TODO: Add Profile page
+10.TODO: Add Profile pages
+||\/||
+December 2, 2021
+Version: 0.05 | Marketplace -> Social Media -> Mint Posts
+11. TODO: Upload Data to IPFS 
+12. TODO: Post show avatar | description omg this is my kid :D |  either
+save as public or private post. For public minting fees low. for private save memories privacy. Ownership availabliy if user allow selected user
+to own nft.
+13. Home Page for public Posts
+14. On top post page show add post
+15. On bottom show posts in scroll view
+16. Posts with violence,nuditiy, weapons, drugs except Cannabis,not allowed to mint
+17. Profile Page for public Posts
+18. Search Categories for public Posts
+19. Liked categries search based 
+20. allow to search other Categories also
+21. Profile page with public and private minted posts tabs 
+22. Own token wallet VMTHUB -> BUY VMTHUB Coin
+23. Post will be minted under VMTHUB tokens.
+24. How to create own token on ethereum chain,registring token
+25. Create own currecny for minting posts
+26. In user table wallet address is privacy key, privacy options,😋joined date🥳,🥺left date💙 .
+27. In Post table posts by users, primary key in VMTwalletaddress user name, description, created at, data from asset url.
+28. For text, convert it into txt_file upload it and for viewing  txt file get data into text and add in matformfield
+29. For image, url and src and for video create a video player from url
+30. For music, stream from url
+DONE: Added create post and search on homepage
+DONE: Added Homepage in center for all screens with pos cards

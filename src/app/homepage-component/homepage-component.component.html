@@ -1,23 +1,63 @@
 <!-- First Search Grid -->
 <mat-grid-list cols="1" rowHeight="2:1" style="margin: 1%;text-align: center;" [gutterSize]="'10px'">
-<mat-form-field appearance="fill" style="width: 100%;">
-    <mat-label>Search</mat-label>
+<mat-form-field  style="width: 70%;">
+    <mat-label>Search...</mat-label>
     <input matInput>
   </mat-form-field>
   </mat-grid-list>
 <!-- /////// -->
+<!-- Post create card -->
+<mat-grid-list cols="1" class="md-grid-list" style="margin: 1%;text-align: center;" [gutterSize]="'10px'">
+  <div class="add-post-card">
+  <mat-form-field [style.fontSize]="14" appearance="fill" style="width: 100%;">  
+    <mat-label>Write Someting...</mat-label>
+    <textarea matInput
+              cdkTextareaAutosize
+              #autosize="cdkTextareaAutosize"
+              cdkAutosizeMinRows="1"
+              cdkAutosizeMaxRows="5">
+            </textarea>
+  </mat-form-field>
+  <button mat-button style="cursor: pointer;width: 50px;"><mat-icon>surround_sound</mat-icon></button>
+  <button mat-button style="cursor: pointer;width: 50px;"><mat-icon>videocam</mat-icon></button>
+  <button mat-button style="cursor: pointer;width: 50px;">Post</button>
 
+</div>
+    </mat-grid-list>
+
+<!-- End Of post create card -->
   <!-- Second-grid| desktop|mobile|Tabs also --> 
-<mat-grid-list  cols="{{columns}}" rowHeight="2:1" style="margin: 1%;" [gutterSize]="'10px'" (window:resize)="onResize($event)">
-    <mat-grid-tile class="tiles" *ngFor="let nft of nftsForSale" colspan="2" rowspan="3" (click)="openDetails('details',nft)">
-      <div style="text-align: center;display: block;">
+<mat-grid-list  cols="{{columns}}" class="md-grid-list" rowHeight="2:2" style="margin: 1%;" [gutterSize]="'10px'" (window:resize)="onResize($event)">
+    <!-- <mat-grid-tile class="tiles" *ngFor="let nft of nftsForSale" (click)="openDetails('details',nft)"> -->
+    <!-- Create for video, music|sound , text, cards.Auto Height card -->
+    <!-- <div style="text-align: center;display: block;">
         <img src="{{nft.image}}" alt="Card image cap" style="text-align: center;"/>
-        <mat-grid-tile-footer>
+        [] -->
+        <!-- <mat-grid-tile-footer>
           <h3><b>{{nft.name}}</b></h3>&nbsp;
           <h3><b>{{nft.price}}ETH: </b></h3>
           <button mat-raised-button color="primary" style="margin-left:2%" (click)="buyNft(nft)">Buy</button>
-          </mat-grid-tile-footer>
-      </div>
-    </mat-grid-tile>
+          </mat-grid-tile-footer> -->
+      <!-- </div> -->
+      <mat-card class="post-card" *ngFor="let nft of nftsForSale" style="margin-top:2%">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>  
+    <!-- </mat-grid-tile> -->
   </mat-grid-list>
 <!-- ...... -->

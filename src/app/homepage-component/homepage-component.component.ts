@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
 import {ethers} from 'ethers';
 import abi from '../contracts/HUB.sol/HUB.json';
 import marketabi from '../contracts/HUB_marketplace.sol/NFTMarket.json';
 import {AbiItem} from 'web3-utils'
 import * as axios from 'axios';
 import { Router } from '@angular/router';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import {take} from 'rxjs/operators';
 declare global {
   interface Window {
     ethereum: any;
@@ -19,11 +21,18 @@ export const web3 = alcweb3;
   styleUrls: ['./homepage-component.component.css']
 })
 export class HomepageComponentComponent implements OnInit {
-  columns:any = 6;
+  columns:any = 1;
   nftsForSale:any = [];
   nftmarketaddress:any = "0xa093427ceA084F2fF80DCa9A03358760a1120a6d"
   nft_contractAddress:any = "0xc3F9e532B716EBdBd81dF897B716f9A41E689299"
-  constructor(private _router:Router) { }
+  constructor(private _router:Router,private _ngZone: NgZone) { }
+
+  @ViewChild('autosize') autosize: CdkTextareaAutosize;
+
+  triggerResize() {
+    // Wait for changes to be applied, then trigger textarea resize.
+    this._ngZone.onStable.pipe(take(1)).subscribe(() => this.autosize.resizeToFitContent(true));
+  }
 
   ngOnInit(): void {
     // code to check width of device
@@ -32,11 +41,11 @@ export class HomepageComponentComponent implements OnInit {
 
 
     if (element < 950) {
-      this.columns = 2;
+      this.columns = 1;
     }
 
     if (element > 950) {
-      this.columns = 6;
+      this.columns = 1;
     }
 
     this.loadNfts();
@@ -47,11 +56,11 @@ export class HomepageComponentComponent implements OnInit {
 
 
     if (element < 950) {
-      this.columns = 2;
+      this.columns = 1;
     }
 
     if (element > 950) {
-      this.columns = 6;
+      this.columns = 1;
     }
 
     

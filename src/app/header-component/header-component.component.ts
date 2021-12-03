@@ -16,6 +16,10 @@ export class HeaderComponentComponent implements OnInit {
   constructor(private _router:Router) { }
   
   ngOnInit() {
+    if(localStorage.getItem('myAccount'))
+    {
+      this.userWalletAddress = localStorage.getItem('myAccount');
+    } 
   }
 
   menuRouteChange(route: string) {
@@ -33,8 +37,9 @@ export class HeaderComponentComponent implements OnInit {
       console.log('MetaMask is installed!');
       // get user wallet address
       const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-      const account = accounts[0];  // this is the user public wallet address
-      this.userWalletAddress = account;
+      const account = accounts[0];
+        this.userWalletAddress = account;
+       // this is the user public wallet address
       console.log("myAccount is---->>>>",account);
       localStorage.setItem('myAccount',account);
       // metamask deeplinking for ios|android app

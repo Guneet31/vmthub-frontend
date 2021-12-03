@@ -1,18 +1,19 @@
 
 <mat-toolbar color="primary" >
-    <span (click)="menuRouteChange('home')" style="cursor:pointer">NFT^_^HUB</span>
+    <span (click)="menuRouteChange('home')" style="cursor:pointer">VMT^_^HUB</span>
     <span class="example-spacer"></span>
     <button (click)="menuRouteChange('home')" mat-button aria-label="Example icon-button with menu icon">
        Discover
       </button>
-      <button (click)="menuRouteChange('createnft')" mat-button aria-label="Example icon-button with menu icon">
-        Create
-       </button>
+      <!-- Add this functionality in dialog on home page under post-->
+      <!-- <button (click)="menuRouteChange('createnft')"  mat-button aria-label="Example icon-button with menu icon">
+        <mat-icon>add</mat-icon>
+       </button> -->
+       <!--  -->
       <button mat-button [matMenuTriggerFor]="menu">Profile</button>
       <mat-menu #menu="matMenu">
       <button mat-menu-item *ngIf="!userWalletAddress" (click)="connectUserWallet()">Connect Metamask Wallet</button>
-      <button mat-menu-item *ngIf="userWalletAddress" (click)="menuRouteChange('profile')">My Profile {{userWalletAddress}}</button>
+      <button mat-menu-item *ngIf="userWalletAddress" (click)="menuRouteChange('profile')">{{userWalletAddress}}</button>
       <button mat-menu-item *ngIf="userWalletAddress" (click)="openSettings()">Settings</button>
       </mat-menu>
-
   </mat-toolbar>

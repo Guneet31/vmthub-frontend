@@ -20,13 +20,18 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatMenuModule} from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
 import { NftDetailsComponentComponent } from './nft-details-component/nft-details-component.component';
+import { PostComponentComponent } from './post-component/post-component.component';
+import {MatCardModule} from '@angular/material/card';
+import {TextFieldModule} from '@angular/cdk/text-field';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponentComponent,
     HeaderComponentComponent,
     CreateNftComponentComponent,
-    NftDetailsComponentComponent
+    NftDetailsComponentComponent,
+    PostComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -44,8 +49,9 @@ import { NftDetailsComponentComponent } from './nft-details-component/nft-detail
     ReactiveFormsModule,
     MatProgressBarModule,
     MatMenuModule,
-    HttpClientModule
-    
+    HttpClientModule,
+    MatCardModule,
+    TextFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
