@@ -23,7 +23,7 @@ import { NftDetailsComponentComponent } from './nft-details-component/nft-detail
 import { PostComponentComponent } from './post-component/post-component.component';
 import {MatCardModule} from '@angular/material/card';
 import {TextFieldModule} from '@angular/cdk/text-field';
-
+import {MatTooltipModule} from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +51,8 @@ import {TextFieldModule} from '@angular/cdk/text-field';
     MatMenuModule,
     HttpClientModule,
     MatCardModule,
-    TextFieldModule
+    TextFieldModule,
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

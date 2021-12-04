@@ -61,5 +61,13 @@ to own nft.
 28. For text, convert it into txt_file upload it and for viewing  txt file get data into text and add in matformfield
 29. For image, url and src and for video create a video player from url
 30. For music, stream from url
+31: Add code for updating db to load latest posts from contract
 DONE: Added create post and search on homepage
-DONE: Added Homepage in center for all screens with pos cards
+DONE: Added Homepage in center for all screens with post cards
+||\/||
+December 4, 2021
+Version: 0.06
+32: Added code for video and image
+33: TODO: Add code for mobile wallet, save metadata url in db, fetch data from db
+34: TODO: Create nft page in home page
+35: TODO: Add detail page changes

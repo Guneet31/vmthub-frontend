@@ -1,4 +1,4 @@
-import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import {ethers} from 'ethers';
 import abi from '../contracts/HUB.sol/HUB.json';
 import marketabi from '../contracts/HUB_marketplace.sol/NFTMarket.json';
@@ -28,6 +28,7 @@ export class HomepageComponentComponent implements OnInit {
   constructor(private _router:Router,private _ngZone: NgZone) { }
 
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
+  @ViewChild('videoPlayer') videoplayer: ElementRef;
 
   triggerResize() {
     // Wait for changes to be applied, then trigger textarea resize.
@@ -36,9 +37,10 @@ export class HomepageComponentComponent implements OnInit {
 
   ngOnInit(): void {
     // code to check width of device
+
     const element = window.innerWidth;
     console.log(element);
-
+    
 
     if (element < 950) {
       this.columns = 1;
@@ -78,12 +80,17 @@ async loadNfts()
     const data = await marketContract['fetchMarketItems']()
     
     const items = await Promise.all(data.map(async (i:any) => {
-      console.log(i)
+    
+     // console.log(i)
       const tokenUri = await tokenContract['tokenURI'](i.tokenId)
       if(tokenUri != "https://gateway.pinata.cloud/ipfs/QmbFMke1KXqnYyBBWxB74N4c5SBnJMVAiMNRcGu6x1AwQH")
-    { const meta = await axios.default.get(tokenUri)
+      {
+      const meta = await axios.default.get(tokenUri)
+      
+      var item= null;
       let price = web3.utils.fromWei(i.price.toString(), 'ether');
-      let item = {
+     if(meta.data.fileType){ 
+       item = {
         price,
         tokenId: i.tokenId.toNumber(),
         seller: i.seller,
@@ -91,9 +98,12 @@ async loadNfts()
         image: meta.data.image,
         name: meta.data.name,
         contract: i.nftContract,
-      }
+        description: meta.data.description,
+        type: meta.data.fileType.includes("mov" || "mp4") ? "mov" || "mp4" : "jpg" || "png" || "jpeg",
+      } }
+    }
       return item
-    }else{return}
+      
     }))
     this.nftsForSale = items.filter(i => i != undefined)
     console.log("items",items);
@@ -115,5 +125,10 @@ async loadNfts()
   this._router.navigate([route],{state:nft})
   }
 
+
+
+toggleVideo(event: any) {
+    this.videoplayer.nativeElement.play();
+}
 
 }
