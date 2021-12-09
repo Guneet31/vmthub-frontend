@@ -71,3 +71,11 @@ Version: 0.06
 33: TODO: Add code for mobile wallet, save metadata url in db, fetch data from db
 34: TODO: Create nft page in home page
 35: TODO: Add detail page changes
+||\/||
+December 9, 2021
+Version: 0.07
+36: DONE: Added side navs for desktop devices
+37. DONE: Added code for mint post dialog
+38. TODO: Show contacts on right side of nav
+39. TODO: Show menu items on left side of nav
+40. TODO: Align posts in center

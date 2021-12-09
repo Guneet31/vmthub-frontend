@@ -1,75 +1,134 @@
-<!-- First Search Grid -->
-<mat-grid-list cols="1" rowHeight="2:1" style="margin: 1%;text-align: center;" [gutterSize]="'10px'">
-<mat-form-field  style="width: 70%;">
-    <mat-label>Search...</mat-label>
-    <input matInput>
-  </mat-form-field>
-  </mat-grid-list>
-<!-- /////// -->
-<!-- Post create card -->
-<mat-grid-list cols="1" class="md-grid-list" style="margin: 1%;text-align: center;" [gutterSize]="'10px'">
-  <div class="add-post-card">
-  <mat-form-field [style.fontSize]="14" appearance="fill" style="width: 100%;">  
-    <mat-label>Write Someting...</mat-label>
-    <textarea matInput
-              cdkTextareaAutosize
-              #autosize="cdkTextareaAutosize"
-              cdkAutosizeMinRows="1"
-              cdkAutosizeMaxRows="5">
-            </textarea>
-  </mat-form-field>
-  <div style="margin-top: -10px;">
-  <button mat-button #tooltip="matTooltip" matTooltip="Add Photo" [matMenuTriggerFor]="menu" style="cursor: pointer;width: 10px;"><mat-icon>surround_sound</mat-icon></button>
-  <button mat-button #tooltip="matTooltip" matTooltip="Add Audio/video" [matMenuTriggerFor]="menu2" style="cursor: pointer;width: 10px;"><mat-icon>videocam</mat-icon></button>
-  <button mat-button style="cursor: pointer;width: 10px;">Post</button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>Browse</button>
-  </mat-menu>
-  <mat-menu #menu2="matMenu">
-    <button mat-menu-item>Browse</button>
-  </mat-menu>
-</div>
-</div>
-    </mat-grid-list>
 
-<!-- End Of post create card -->
-  <!-- Second-grid| desktop|mobile|Tabs also --> 
-<mat-grid-list  cols="{{columns}}" class="md-grid-list" rowHeight="2:2" style="margin: 1%;" [gutterSize]="'10px'" (window:resize)="onResize($event)">
-    <!-- <mat-grid-tile class="tiles" *ngFor="let nft of nftsForSale" (click)="openDetails('details',nft)"> -->
-    <!-- Create for video, music|sound , text, cards.Auto Height card -->
-    <!-- <div style="text-align: center;display: block;">
-        <img src="{{nft.image}}" alt="Card image cap" style="text-align: center;"/>
-        [] -->
-        <!-- <mat-grid-tile-footer>
-          <h3><b>{{nft.name}}</b></h3>&nbsp;
-          <h3><b>{{nft.price}}ETH: </b></h3>
-          <button mat-raised-button color="primary" style="margin-left:2%" (click)="buyNft(nft)">Buy</button>
-          </mat-grid-tile-footer> -->
-      <!-- </div> -->
-      <mat-card class="post-card" *ngFor="let nft of nftsForSale" style="margin-top:10%">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title *ngIf="nft.name">{{nft.name}}</mat-card-title>
-          <mat-card-subtitle>music | <span><a href="https://ropsten.etherscan.io/address/{{nft.contract}}" target="_blank" style="color: gray;text-decoration: none;"> contract</a></span></mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image *ngIf="nft.type=='png' || nft.type=='jpg' || nft.type=='jpeg'" src="{{nft.image}}" alt="...">
-        <div class="video" style="text-align: center;" *ngIf="nft.type=='mov' || nft.type=='mp4'">
-          <video controls width="340" height="200" (click)="toggleVideo($event)"  #videoPlayer>
-              <source *ngIf="nft.image" src="https://gateway.pinata.cloud/ipfs/QmdrgtScjDsx5qY6Tw4o2m839JnzUNJk2zycKoQyV93tJg "/>
-              Browser not supported
-          </video>
-      </div>
+<ng-container *ngIf="!isMobile" style="text-align: center;">
 
-        <mat-card-content>
-          <p>
-            {{nft.description}}
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
-        </mat-card-actions>
-      </mat-card>  
-    <!-- </mat-grid-tile> -->
-  </mat-grid-list>
-<!-- ...... -->
+  <mat-drawer-container class="example-container" autosize>
+  <!-- Side Menu Items -->
+  <mat-drawer style="position: fixed;" mode="side" opened >
+    <mat-list>
+      <mat-list-item><span color="primary" (click)="menuRouteChange('home')" style="cursor:pointer"><b>VMT^_^HUB</b></span></mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item> <button (click)="menuRouteChange('home')" mat-button color="primary" aria-label="Example icon-button with menu icon">
+        Home
+       </button></mat-list-item>
+      <mat-list-item> <button (click)="menuRouteChange('home')" mat-button color="primary" aria-label="Example icon-button with menu icon">
+        Discover
+       </button></mat-list-item>
+      <!-- <mat-divider></mat-divider> -->
+      <mat-list-item><button color="primary" mat-button [matMenuTriggerFor]="menu">Profile</button></mat-list-item>
+    </mat-list>
+   
+   
+      <!-- Add this functionality in dialog on home page under post-->
+      <!-- <button (click)="menuRouteChange('createnft')"  mat-button aria-label="Example icon-button with menu icon">
+        <mat-icon>add</mat-icon>
+       </button> -->
+       <!--  -->
+   
+      <mat-menu #menu="matMenu">
+      <button mat-menu-item *ngIf="!userWalletAddress" (click)="connectUserWallet()">Connect Metamask Wallet</button>
+      <button mat-menu-item *ngIf="userWalletAddress" (click)="menuRouteChange('profile')">{{userWalletAddress}}</button>
+      <button mat-menu-item *ngIf="userWalletAddress" (click)="openSettings()">Settings</button>
+      </mat-menu> 
+  </mat-drawer> 
+<!-- End Of Side Menu -->
+
+<!-- main Content Drawer -->
+  <mat-drawer-content>
+    <!-- First Search Grid -->
+    <mat-grid-list cols="1" rowHeight="2:1" style="margin: 1%;text-align: center;" [gutterSize]="'10px'">
+    <mat-form-field  style="width: 50%;">
+        <mat-label>Search...</mat-label>
+        <input matInput>
+      </mat-form-field>
+      </mat-grid-list>
+    <!-- /////// -->
+    <!-- Post create card -->
+    <mat-grid-list cols="1" class="md-grid-list" style="margin: 1%;text-align: center;" [gutterSize]="'10px'">
+      <div class="add-post-card">
+      <!-- <mat-form-field [style.fontSize]="14" appearance="fill" style="width: 100%;">  
+        <mat-label>Write Someting...</mat-label>
+        <textarea matInput
+                  cdkTextareaAutosize
+                  #autosize="cdkTextareaAutosize"
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="5">
+                </textarea>
+      </mat-form-field> -->
+      <div style="margin-top: -10px;">
+      <!-- <button mat-button #tooltip="matTooltip" matTooltip="Add Photo" [matMenuTriggerFor]="menu" style="cursor: pointer;width: 10px;"><mat-icon>surround_sound</mat-icon></button>
+      <button mat-button #tooltip="matTooltip" matTooltip="Add Audio/video" [matMenuTriggerFor]="menu2" style="cursor: pointer;width: 10px;"><mat-icon>videocam</mat-icon></button> -->
+      <button mat-button style="cursor: pointer;width: 10px;" color="primary" (click)="openDialog()">Mint Post</button>
+      <mat-menu #menu="matMenu">
+        <!-- <ng-template matStepLabel>Browse Image</ng-template> -->
+        <input  formControlName="thirdControl" placeholder=" "
+        (change)="processFile($event)"
+        required type="file">
+      </mat-menu>
+      <mat-menu #menu2="matMenu">
+        <!-- <ng-template matStepLabel>Browse Video/Sound</ng-template> -->
+        <input formControlName="thirdControl" placeholder=" "
+                  (change)="processFile($event)"
+                  required type="file">
+      </mat-menu>
+    </div>
+    </div>
+        </mat-grid-list>
+    
+    <!-- End Of post create card -->
+      <!-- Second-grid| desktop|mobile|Tabs also --> 
+    <mat-grid-list  cols="{{columns}}" class="md-grid-list" rowHeight="2:2" style="margin: 1%;" [gutterSize]="'10px'" (window:resize)="onResize($event)">
+        <!-- <mat-grid-tile class="tiles" *ngFor="let nft of nftsForSale" (click)="openDetails('details',nft)"> -->
+        <!-- Create for video, music|sound , text, cards.Auto Height card -->
+        <!-- <div style="text-align: center;display: block;">
+            <img src="{{nft.image}}" alt="Card image cap" style="text-align: center;"/>
+            [] -->
+            <!-- <mat-grid-tile-footer>
+              <h3><b>{{nft.name}}</b></h3>&nbsp;
+              <h3><b>{{nft.price}}ETH: </b></h3>
+              <button mat-raised-button color="primary" style="margin-left:2%" (click)="buyNft(nft)">Buy</button>
+              </mat-grid-tile-footer> -->
+          <!-- </div> -->
+          <mat-card class="post-card" *ngFor="let nft of nftsForSale" style="margin-top:10%">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title *ngIf="nft.name">{{nft.name}}</mat-card-title>
+              <mat-card-subtitle>music | <span><a href="https://ropsten.etherscan.io/address/{{nft.contract}}" target="_blank" style="color: gray;text-decoration: none;"> contract</a></span></mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image *ngIf="nft.type=='png' || nft.type=='jpg' || nft.type=='jpeg'" src="{{nft.image}}" alt="...">
+            <div class="video" style="text-align: center;" *ngIf="nft.type=='mov' || nft.type=='mp4'">
+              <video controls width="340" height="200" (click)="toggleVideo($event)"  #videoPlayer>
+                  <source *ngIf="nft.image" src="{{nft.image}}"/>
+                  Browser not supported
+              </video>
+          </div>
+    
+            <mat-card-content>
+              <p>
+                {{nft.description}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button>LIKE</button>
+              <button mat-button>SHARE</button>
+            </mat-card-actions>
+          </mat-card>  
+        <!-- </mat-grid-tile> -->
+      </mat-grid-list>
+    <!-- ...... --></mat-drawer-content>
+    <!-- side-nav on right side drawer -->
+    <!-- For chat-contacts -->
+    <mat-drawer style="position: fixed;" mode="side" opened position="end">
+      <mat-list>
+        <mat-list-item><span><b color="primary">Contacts</b></span></mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item> <button  mat-button aria-label="Example icon-button with menu icon">
+          Contact1
+         </button></mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item> <button  mat-button aria-label="Example icon-button with menu icon">
+          Contact2
+         </button></mat-list-item>
+      </mat-list>
+    </mat-drawer>
+</mat-drawer-container>
+</ng-container>

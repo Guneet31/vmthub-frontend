@@ -7,6 +7,8 @@ import * as axios from 'axios';
 import { Router } from '@angular/router';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import {take} from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateNftComponentComponent } from '../create-nft-component/create-nft-component.component';
 declare global {
   interface Window {
     ethereum: any;
@@ -22,10 +24,14 @@ export const web3 = alcweb3;
 })
 export class HomepageComponentComponent implements OnInit {
   columns:any = 1;
+  dialogWidth:any = '400px';
   nftsForSale:any = [];
+  isMobile:boolean = false;
   nftmarketaddress:any = "0xa093427ceA084F2fF80DCa9A03358760a1120a6d"
   nft_contractAddress:any = "0xc3F9e532B716EBdBd81dF897B716f9A41E689299"
-  constructor(private _router:Router,private _ngZone: NgZone) { }
+  formData = new FormData();
+  userWalletAddress:any;
+  constructor(private _router:Router,private _ngZone: NgZone,public dialog: MatDialog) { }
 
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
   @ViewChild('videoPlayer') videoplayer: ElementRef;
@@ -44,12 +50,19 @@ export class HomepageComponentComponent implements OnInit {
 
     if (element < 950) {
       this.columns = 1;
+      this.dialogWidth = '370px';
+      this.isMobile = true;
     }
 
     if (element > 950) {
       this.columns = 1;
+      this.dialogWidth = '500px';
+      this.isMobile = false;
     }
-
+    if(localStorage.getItem('myAccount'))
+    {
+      this.userWalletAddress = localStorage.getItem('myAccount');
+    } 
     this.loadNfts();
   }
   onResize(event:any) {
@@ -124,11 +137,66 @@ async loadNfts()
   openDetails(route:any,nft:any) {
   this._router.navigate([route],{state:nft})
   }
-
+  processFile(event:any) {
+    const file = event.target.files[0];
+    this.formData.append('file',file,file.name);
+  }
 
 
 toggleVideo(event: any) {
     this.videoplayer.nativeElement.play();
 }
+
+openDialog(): void {
+  const dialogRef = this.dialog.open(CreateNftComponentComponent, {
+    width: this.dialogWidth,
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+  });
+}
+
+menuRouteChange(route: string) {
+  this._router.navigate([route]);
+}
+
+
+
+openSettings()
+{
+  this._router.navigate(['/settings']);
+}
+
+
+async connectUserWallet()
+{
+  // Check if metamas is installed
+  if (typeof window.ethereum !== 'undefined') {
+    // if metaMask is installed
+    console.log('MetaMask is installed!');
+    // get user wallet address
+    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    const account = accounts[0];
+      this.userWalletAddress = account;
+     // this is the user public wallet address
+    console.log("myAccount is---->>>>",account);
+    localStorage.setItem('myAccount',account);
+    // metamask deeplinking for ios|android app
+
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 }

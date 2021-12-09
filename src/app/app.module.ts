@@ -24,6 +24,9 @@ import { PostComponentComponent } from './post-component/post-component.componen
 import {MatCardModule} from '@angular/material/card';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +56,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatCardModule,
     TextFieldModule,
     MatTooltipModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,9 +1,9 @@
   <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Fill out your nft name</ng-template>
+        <ng-template matStepLabel>Title</ng-template>
         <mat-form-field appearance="fill">
-          <mat-label>Name</mat-label>
+          <mat-label>Title</mat-label>
           <input matInput placeholder=" " formControlName="firstCtrl" required>
         </mat-form-field>
         <div>
@@ -13,7 +13,7 @@
     </mat-step>
     <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Fill out your nft description</ng-template>
+        <ng-template matStepLabel>Description</ng-template>
         <mat-form-field appearance="fill" style="width: 100%;">
           <mat-label>Description</mat-label>
           <input matInput formControlName="secondCtrl" placeholder=" "
@@ -27,7 +27,7 @@
     </mat-step>
     <mat-step>
         <form [formGroup]="thirdFormGroup">
-            <ng-template matStepLabel>Select media for your nft</ng-template>
+            <ng-template matStepLabel>Select file</ng-template>
             <!-- <mat-form-field appearance="fill"> -->
               <!-- <mat-label>Select media </mat-label> -->
               <input  formControlName="thirdControl" placeholder=" "
@@ -42,7 +42,7 @@
     </mat-step>
     <mat-step>
         <form [formGroup]="fourthFormGroup">
-            <ng-template matStepLabel>Set price for your nft</ng-template>
+            <ng-template matStepLabel>Set price</ng-template>
             <mat-form-field appearance="fill">
               <mat-label>Price</mat-label>
               <input matInput formControlName="fourthControl" placeholder=" "
