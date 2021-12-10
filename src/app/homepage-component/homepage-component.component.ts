@@ -55,7 +55,7 @@ export class HomepageComponentComponent implements OnInit {
     }
 
     if (element > 950) {
-      this.columns = 1;
+      this.columns = 2;
       this.dialogWidth = '500px';
       this.isMobile = false;
     }

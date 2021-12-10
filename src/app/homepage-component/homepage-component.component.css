@@ -11,9 +11,10 @@
       flex-direction: column;
   } 
   .post-card {
-    max-width: 700px;
-
+    max-width: 400px;
+    border-radius: 6px;
   }
+  
   .add-post-card {
     width: 100%;
     
@@ -28,6 +29,3 @@
     flex-wrap: wrap;
     justify-content: center;
   }
-  .mat-sidenav-backdrop.mat-sidenav-shown{
-    background-color: transparent !important;
-}

@@ -16,4 +16,43 @@
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- <app-header-component></app-header-component> -->
-<router-outlet></router-outlet>
+
+<mat-toolbar color="primary" >
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()" >
+      <mat-icon>menu</mat-icon>
+    </button>
+      <span  style="cursor:pointer" (click)="menuRouteChange('home')">VMT^_^HUB</span>
+      <span class="example-spacer"></span>
+      <!-- <button (click)="menuRouteChange('home')"  mat-button aria-label="Example icon-button with menu icon">
+         Discover
+        </button> -->
+        <!-- Add this functionality in dialog on home page under post-->
+        <button (click)="menuRouteChange('createnft')"  mat-button aria-label="Example icon-button with menu icon">
+          <mat-icon>add</mat-icon>
+         </button>
+         <!--  -->
+        <button mat-button [matMenuTriggerFor]="menu">Profile</button>
+        <mat-menu #menu="matMenu">
+        <button mat-menu-item *ngIf="!userWalletAddress" (click)="connectUserWallet()">Connect Metamask Wallet</button>
+        <button mat-menu-item *ngIf="userWalletAddress" (click)="menuRouteChange('profile')">{{userWalletAddress}}</button>
+        <button mat-menu-item *ngIf="userWalletAddress" (click)="menuRouteChange('settings')">Settings</button>
+        </mat-menu>
+    </mat-toolbar>
+<!-- Body content -->
+
+
+    <mat-drawer-container>
+        <mat-drawer #drawer class="example-sidenav" mode="side">
+            <mat-list>
+                <mat-list-item><mat-icon>home</mat-icon>&nbsp;Home </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item><mat-icon>album</mat-icon>&nbsp;Discover </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item><mat-icon>account_balance_wallet</mat-icon>&nbsp;Wallet</mat-list-item>
+               </mat-list>
+        </mat-drawer>
+        <mat-drawer-content>
+            <router-outlet></router-outlet>
+        </mat-drawer-content>
+      </mat-drawer-container>
+
