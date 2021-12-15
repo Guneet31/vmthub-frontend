@@ -27,6 +27,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
+import { SignupComponentComponent } from './signup-component/signup-component.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import {MatListModule} from '@angular/material/list';
     HeaderComponentComponent,
     CreateNftComponentComponent,
     NftDetailsComponentComponent,
-    PostComponentComponent
+    PostComponentComponent,
+    SignupComponentComponent
   ],
   imports: [
     BrowserModule,

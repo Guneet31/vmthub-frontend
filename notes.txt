@@ -84,3 +84,15 @@ December 9, 2021
 Version: 0.08
 41: DONE: Added side nav changes and home page changes
 42: TODO: Work on UI/UX
+||\/||
+December 13, 2021
+Version: 0.08
+43: Add GCP cloud mysql database
+44. Add Proof of attendance, create nfts and distribute to people who attend the event, attach pic/videoo and that badge ass proof of attendance, show as proof
+||\/||
+December 14, 2021,December 15, 2021
+Version: 0.09
+45: Done: Add code for ionic-app signup page for entering ethereum address
+46: Todo: add code for home page, profile page
+47: Todo: Create events and allocate nfts
+48: Todo: Add infinte scroll on home page for events
