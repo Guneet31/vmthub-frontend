@@ -1,4 +1,4 @@
-# VMT-HUB is a NFT platform, where user can create, buy or view nft's
+# VMT-HUB is a NFT minting platform, where user can create, buy or view nft's
 - To run the project first install nodeJS version > 10, Angular version 8
 - clone the repository and run npm i
 - after installing the project run ng serve
