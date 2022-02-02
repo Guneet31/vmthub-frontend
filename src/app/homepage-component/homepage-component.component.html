@@ -55,10 +55,10 @@
           <mat-card class="post-card" *ngFor="let nft of nftsForSale" style="margin-top:6%">
             <mat-card-header>
               <div mat-card-avatar class="example-header-image"></div>
-              <mat-card-title *ngIf="nft.name">{{nft.name}}</mat-card-title>
+              <mat-card-title *ngIf="nft.name">{{nft.name ? nft.name : ' MyNFT'}}</mat-card-title>
               <mat-card-subtitle>music | <span><a href="https://ropsten.etherscan.io/address/{{nft.contract}}" target="_blank" style="color: gray;text-decoration: none;"> contract</a></span></mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image *ngIf="nft.type=='png' || nft.type=='jpg' || nft.type=='jpeg'" src="{{nft.image}}" alt="...">
+            <img mat-card-image style="width: 300px;height: 300px;" *ngIf="nft.type=='png' || nft.type=='jpg' || nft.type=='jpeg'" src="{{nft.image}}" alt="...">
             <div class="video" style="text-align: center;" *ngIf="nft.type=='mov' || nft.type=='mp4'">
               <video controls width="340" height="200" (click)="toggleVideo($event)"  #videoPlayer>
                   <source *ngIf="nft.image" src="{{nft.image}}"/>

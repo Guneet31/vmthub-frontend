@@ -1,7 +1,7 @@
 import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import {ethers} from 'ethers';
-import abi from '../contracts/HUB.sol/HUB.json';
 import marketabi from '../contracts/HUB_marketplace.sol/NFTMarket.json';
+import abi from '../contracts/HUB.sol/HUB.json';
 import {AbiItem} from 'web3-utils'
 import * as axios from 'axios';
 import { Router } from '@angular/router';
@@ -27,8 +27,8 @@ export class HomepageComponentComponent implements OnInit {
   dialogWidth:any = '400px';
   nftsForSale:any = [];
   isMobile:boolean = false;
-  nftmarketaddress:any = "0xa093427ceA084F2fF80DCa9A03358760a1120a6d"
-  nft_contractAddress:any = "0xc3F9e532B716EBdBd81dF897B716f9A41E689299"
+  nftmarketaddress:any = "0x1dA64810664454aaE4D551DC9287aF0dD91f10dC"
+  nft_contractAddress:any = "0xbE75718619F7801dC3a759dEC13F093c29fb74FD"
   formData = new FormData();
   userWalletAddress:any;
   constructor(private _router:Router,private _ngZone: NgZone,public dialog: MatDialog) { }
@@ -96,10 +96,15 @@ async loadNfts()
     
      // console.log(i)
       const tokenUri = await tokenContract['tokenURI'](i.tokenId)
-      if(tokenUri != "https://gateway.pinata.cloud/ipfs/QmbFMke1KXqnYyBBWxB74N4c5SBnJMVAiMNRcGu6x1AwQH")
-      {
-      const meta = await axios.default.get(tokenUri)
-      
+      if(tokenUri == "https://gateway.pinata.cloud/ipfs/QmbFMke1KXqnYyBBWxB74N4c5SBnJMVAiMNRcGu6x1AwQH")
+      { console.log(tokenUri)
+      const meta = await axios.default.get("https://gateway.pinata.cloud/ipfs/QmRPS6hs1YsTShQjo7vdohXCG7qGrMB6SXcaDG2z2F54Qz")
+      console.log(meta.data)
+      this.nftsForSale.push({name:meta.data.name,
+      image:meta.data.image,
+      type:'png',
+      description: meta.data.description,
+      })
       var item= null;
       let price = web3.utils.fromWei(i.price.toString(), 'ether');
      if(meta.data.fileType){ 
@@ -118,7 +123,7 @@ async loadNfts()
       return item
       
     }))
-    this.nftsForSale = items.filter(i => i != undefined)
+  //  this.nftsForSale = items.filter(i => i != undefined)
     console.log("items",items);
   }
 // buy nft from marketplace 
