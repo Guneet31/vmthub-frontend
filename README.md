@@ -23,15 +23,14 @@
 - Make sure there are enough eth in the wallet 
 - for testing use ropsten,rinkeby or localhost
 
+# Details Page
+![Screen Shot 2022-02-01 at 10 23 36 PM](https://user-images.githubusercontent.com/66404335/152089267-292f2516-2611-4e94-b704-32a238f93797.png)
+
+
+
 # 3D/Metahuman
 - Mint 3D characters to use on social platforms as avatars or importing them in games
 - Currently working on creating/importing real time 3D characters, unreal engine/unity exports files and converting them for displaying on web
 - Multiple blockchain compatibilty
 - End Goal: This is a demo export from unreal engine 5 metahuman feature, which will be converted for the platform to mint as NFT
 <img width="1362" alt="Screen Shot 2022-02-01 at 11 28 22 PM" src="https://user-images.githubusercontent.com/66404335/152093256-65088a01-a138-45e6-ac0b-cb09aaba9832.png">
-
-
-
-# Details Page
-![Screen Shot 2022-02-01 at 10 23 36 PM](https://user-images.githubusercontent.com/66404335/152089267-292f2516-2611-4e94-b704-32a238f93797.png)
-
