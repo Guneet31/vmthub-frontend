@@ -28,7 +28,7 @@
 
 
 
-# 3D/Metahuman
+# Future Goals: 3D/Metahuman
 - Mint 3D characters to use on social platforms as avatars or importing them in games
 - Currently working on creating/importing real time 3D characters, unreal engine/unity exports files and converting them for displaying on web
 - Multiple blockchain compatibilty
